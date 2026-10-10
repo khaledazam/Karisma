@@ -5,6 +5,7 @@ type WishlistProduct = {
   name: string;
   category: string;
   price: string;
+  originalPrice?: string;
   image: string;
 };
 
@@ -17,7 +18,7 @@ type WishlistContextValue = {
   clearWishlist: () => void;
 };
 
-const WISHLIST_STORAGE_KEY = "lumiere-wishlist";
+const WISHLIST_STORAGE_KEY = "kireeshna-wishlist";
 
 const WishlistContext = createContext<WishlistContextValue | null>(null);
 

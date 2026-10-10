@@ -1,15 +1,73 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-type CartProduct = {
+export type CartProduct = {
   id: string;
   name: string;
   price: string;
+  originalPrice?: string;
+  category?: string;
   image: string;
 };
 
-type CartItem = CartProduct & {
+export type CartItem = CartProduct & {
   quantity: number;
 };
+
+export type CartAnalytics = {
+  totalAdds: number;
+  productAdds: Record<
+    string,
+    { id: string; name: string; count: number; image: string; price: string }
+  >;
+  lastAddedAt?: string;
+};
+
+const CART_STORAGE_KEY = "kireeshna-cart";
+const CART_ANALYTICS_KEY = "karisma-cart-analytics";
+
+export function getCartAnalytics(): CartAnalytics {
+  if (typeof window === "undefined") {
+    return { totalAdds: 0, productAdds: {} };
+  }
+  try {
+    const raw = window.localStorage.getItem(CART_ANALYTICS_KEY);
+    if (raw) {
+      return JSON.parse(raw);
+    }
+  } catch {}
+  return { totalAdds: 0, productAdds: {} };
+}
+
+function recordCartAdd(product: CartProduct) {
+  if (typeof window === "undefined") return;
+  try {
+    const analytics = getCartAnalytics();
+    analytics.totalAdds = (analytics.totalAdds || 0) + 1;
+    analytics.lastAddedAt = new Date().toISOString();
+
+    if (!analytics.productAdds) {
+      analytics.productAdds = {};
+    }
+
+    const current = analytics.productAdds[product.id] || {
+      id: product.id,
+      name: product.name,
+      count: 0,
+      image: product.image,
+      price: product.price,
+    };
+
+    current.count += 1;
+    current.name = product.name;
+    current.price = product.price;
+    if (product.image) current.image = product.image;
+
+    analytics.productAdds[product.id] = current;
+    window.localStorage.setItem(CART_ANALYTICS_KEY, JSON.stringify(analytics));
+  } catch (err) {
+    console.warn("Failed to record cart addition analytics:", err);
+  }
+}
 
 type CartContextValue = {
   items: CartItem[];
@@ -19,8 +77,6 @@ type CartContextValue = {
   removeFromCart: (id: string) => void;
   clearCart: () => void;
 };
-
-const CART_STORAGE_KEY = "lumiere-cart";
 
 const CartContext = createContext<CartContextValue | null>(null);
 
@@ -56,6 +112,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       items,
       itemCount: items.reduce((total, item) => total + item.quantity, 0),
       addToCart: (product) => {
+        // Record analytics
+        recordCartAdd(product);
+
         setItems((prev) => {
           const existing = prev.find((item) => item.id === product.id);
           if (existing) {

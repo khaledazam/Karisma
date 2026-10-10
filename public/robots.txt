@@ -1,0 +1,9 @@
+# Robots.txt for Karisma Cosmetics - Nesrin Tantawy
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+# Sitemaps
+Sitemap: https://karisma-cosmetics.com/sitemap.xml

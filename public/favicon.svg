@@ -1,12 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Beauty salon icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Nesrin Tantawy - Karisma">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f8d8df" />
-      <stop offset="100%" stop-color="#e37f93" />
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141416" />
+      <stop offset="50%" stop-color="#1c1d22" />
+      <stop offset="100%" stop-color="#101114" />
+    </linearGradient>
+    <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="25%" stop-color="#F2BAC9" />
+      <stop offset="50%" stop-color="#E8F3FA" />
+      <stop offset="75%" stop-color="#B0C8DC" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2BAC9" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#FDFBF7" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#A3CCE9" stop-opacity="0.8" />
     </linearGradient>
   </defs>
-  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#g)" />
-  <path d="M32 17c-6.1 0-11 4.9-11 11v4.6c0 2.3 1.9 4.2 4.2 4.2h13.6c2.3 0 4.2-1.9 4.2-4.2V28c0-6.1-4.9-11-11-11z" fill="#fff5f7" />
-  <path d="M24 31.8h16v4.8H24z" fill="#b6365d" />
-  <path d="M27 43h10l-1.8 8H28.8z" fill="#7a213d" />
+
+  <!-- Background rounded square -->
+  <rect x="5" y="5" width="90" height="90" rx="20" fill="url(#bg)" stroke="url(#borderGrad)" stroke-width="2.5" />
+
+  <!-- Outer NT square frame -->
+  <rect x="18" y="18" width="64" height="64" rx="10" fill="none" stroke="url(#chrome)" stroke-width="3" />
+
+  <!-- NT Monogram -->
+  <g fill="url(#chrome)">
+    <!-- Letter N -->
+    <path d="M 28 32 L 36 32 L 36 68 L 28 68 Z" />
+    <path d="M 33 32 L 53 68 L 47 68 L 28 35 Z" />
+    <path d="M 45 32 L 53 32 L 53 68 L 45 68 Z" />
+
+    <!-- Letter T merged over N -->
+    <path d="M 48 32 L 72 32 L 72 39 L 63 39 L 63 68 L 57 68 L 57 39 L 48 39 Z" />
+  </g>
 </svg>

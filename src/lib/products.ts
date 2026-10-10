@@ -1,108 +1,272 @@
-export const products = [
-  { id: "l1", name: "Velours Rouge", category: "Lipstick", price: "€48", image: "https://tse1.explicit.bing.net/th/id/OIP._MQrw9e9xnOz6EaoBwmFYAHaJQ?w=1440&h=1800&rs=1&pid=ImgDetMain&o=7&rm=3" },
-  { id: "l2", name: "Rouge Atelier", category: "Lipstick", price: "€50", image: "https://blogscdn.thehut.net/app/uploads/sites/2/2022/02/MicrosoftTeams-image-30_1643815223.jpg" },
-  { id: "l3", name: "Petale Satin", category: "Lipstick", price: "€46", image: "https://i.pinimg.com/736x/19/88/99/1988997a0a5dda291454a7dfc55b9026.jpg" },
-  { id: "l4", name: "Rouge Bijou", category: "Lipstick", price: "€52", image: "https://tse1.explicit.bing.net/th/id/OIP.jwKfWBp_b8nMxxYQW4sERwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" },
+export interface BundleItem {
+  id: string;
+  name: string;
+  image?: string;
+  price?: string;
+  quantity?: number;
+}
 
-  { id: "s1", name: "Creme Eternelle", category: "Skincare", price: "€120", image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s2", name: "Serum Lumiere", category: "Skincare", price: "€98", image: "https://images.unsplash.com/photo-1601612628452-9e99ced43524?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s3", name: "Nuage Hydratant", category: "Skincare", price: "€86", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s4", name: "Velours Cleanse", category: "Skincare", price: "€62", image: "https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s5", name: "Masque Doré", category: "Skincare", price: "€74", image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s6", name: "Essence Rose", category: "Skincare", price: "€69", image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s7", name: "Creme Nuit", category: "Skincare", price: "€112", image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s8", name: "Soin Matin", category: "Skincare", price: "€95", image: "https://tse4.mm.bing.net/th/id/OIP.0B-20jRidO_Elcw4fdre8QAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" },
-  { id: "s9", name: "Lotion Soie", category: "Skincare", price: "€58", image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80" },
-  { id: "s10", name: "Baume Radiant", category: "Skincare", price: "€88", image: "https://images.unsplash.com/photo-1556229010-aa3f7ff66b24?auto=format&fit=crop&w=1200&q=80" },
+export interface Product {
+  id: string;
+  name: string;
+  category: string;
+  price: string;
+  originalPrice?: string;
+  discount?: string;
+  image: string;
+  video?: string;
+  description: string;
+  badge?: string;
+  isBundle?: boolean;
+  bundleItems?: BundleItem[];
+}
 
-  { id: "e1", name: "Palette Doré", category: "Eyes", price: "€86", image: "https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=1200&q=80" },
-  { id: "e3", name: "Ombre Satin", category: "Eyes", price: "€44", image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80" },
-  { id: "e5", name: "Mascara Couture", category: "Eyes", price: "€42", image: "https://tse1.explicit.bing.net/th/id/OIP.kqGS0tSHnR52JxmPGYvKQQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" },
-  { id: "e6", name: "Quartz Regard", category: "Eyes", price: "€63", image: "https://tse1.explicit.bing.net/th/id/OIP.5_mysX_5b9bW6SyL1hAAvQHaHa?w=2000&h=2000&rs=1&pid=ImgDetMain&o=7&rm=3" },
-  { id: "e7", name: "Oeil Velours", category: "Eyes", price: "€55", image: "https://tse1.mm.bing.net/th/id/OIP.SD2_X8JbaLjEgLylfelW1AHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" },
-  { id: "e10", name: "Noir Intense", category: "Eyes", price: "€40", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" },
-
-  { id: "f1", name: "Parfum Solaire", category: "Fragrance", price: "€185", image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f2", name: "Nuit d'Or", category: "Fragrance", price: "€176", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f3", name: "Rose Obscure", category: "Fragrance", price: "€168", image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f4", name: "Ambre Velours", category: "Fragrance", price: "€182", image: "https://tse1.explicit.bing.net/th/id/OIP.2AV7egVl9DpFE5uZbslUyQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3" },
-  { id: "f5", name: "Iris Lumiere", category: "Fragrance", price: "€174", image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f6", name: "Bois Satin", category: "Fragrance", price: "€179", image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f7", name: "Jardin Dore", category: "Fragrance", price: "€171", image: "https://images.unsplash.com/photo-1610461888750-10bfc601b874?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f8", name: "Brise Blanche", category: "Fragrance", price: "€166", image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f9", name: "Parfum Minuit", category: "Fragrance", price: "€188", image: "https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1200&q=80" },
-  { id: "f10", name: "Voile Floral", category: "Fragrance", price: "€172", image: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1200&q=80" },
+export const defaultCategories = [
+  "الكل",
+  "باكدجات وتوفير",
+  "مكياج",
+  "عناية بالبشرة",
+  "عناية بالشعر",
+  "عطور",
+  "مستحضرات تجميل",
+  "عروض وخصومات",
 ];
 
-export const blushProducts = [
+export const categories = defaultCategories;
+
+export const products: Product[] = [
+  // --- مكياج (Makeup) ---
   {
-    id: "b1",
-    name: "Rosée Satin",
-    category: "Blushes",
-    price: "€52",
-    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
+    id: "m1",
+    name: "أحمر شفاه كاريشما المخملي مات",
+    category: "مكياج",
+    price: "420 ج.م",
+    originalPrice: "520 ج.م",
+    discount: "وفري 100 ج.م",
+    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=75",
+    video: "/videos/Lipstick.mp4",
+    description: "تركيبة غنية وثابتة بلون كلاسيكي ناعم تمنح الشفاه مظهراً مخملياً جذاباً يدوم طوال اليوم دون جفاف.",
+    badge: "الأكثر مبيعاً",
   },
   {
-    id: "b2",
-    name: "Velvet Petal",
-    category: "Blushes",
-    price: "€54",
-    image: "https://th.bing.com/th/id/R.33a6cdf82ac17e89b999b4d499fe16c4?rik=Tb22C0wljAUqjQ&riu=http%3a%2f%2ffocallure.com%2fcdn%2fshop%2ffiles%2f1691572210281.jpg%3fv%3d1691572212%26width%3d2048&ehk=mrm3NDiXly7kuecpJRqLp1lqQQfZdKrATgzQBV0HK4w%3d&risl=&pid=ImgRaw&r=0",
+    id: "m2",
+    name: "لوحة ظلال العيون الملكية 18 لون",
+    category: "مكياج",
+    price: "790 ج.م",
+    originalPrice: "950 ج.م",
+    discount: "خصم 17%",
+    image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=75",
+    description: "مزيج فاخر من الدرجات الترابية والميتاليك اللامعة لتمنحك إطلالات يومية وسهرات ساحرة بانسيابية فائقة.",
+    badge: "مميز",
   },
   {
-    id: "b3",
-    name: "Peche Voile",
-    category: "Blushes",
-    price: "€50",
-    image: "https://tse1.explicit.bing.net/th/id/OIP.lce1Z3oeB88MHe4LkbltbgAAAA?w=431&h=587&rs=1&pid=ImgDetMain&o=7&rm=3",
+    id: "m3",
+    name: "فاونديشن كاريشما السائل بتغطية حريرية",
+    category: "مكياج",
+    price: "560 ج.م",
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=75",
+    description: "تغطية متوسطة إلى كاملة قابلة للبناء تعطي مظهراً طبيعياً مشرقاً وملمساً ناعماً متجانساً للبشرة.",
+    badge: "جديد",
   },
   {
-    id: "b4",
-    name: "Rose Lueur",
-    category: "Blushes",
-    price: "€53",
-    image: "https://tse1.explicit.bing.net/th/id/OIP.rBVNxR1sKlYVSW1bLbtrZAHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain&o=7&rm=3",
+    id: "m4",
+    name: "أحمر خدود بودري ناعم درجات الورد",
+    category: "مكياج",
+    price: "380 ج.م",
+    image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=75",
+    video: "/videos/Blush.mp4",
+    description: "لمسة لونية مشرقة تندمج بسلاسة مع بشرتك لتمنح وجنتيك تورداً حيوياً وجذاباً كالإشراقة الطبيعية.",
   },
   {
-    id: "b5",
-    name: "Corail Nuage",
-    category: "Blushes",
-    price: "€51",
-    image: "https://pyxis.nymag.com/v1/imgs/aef/e10/795dc0ac5d499ccc9cb9d0590f2ff72307.rsquare.w600.jpg",
+    id: "m5",
+    name: "ماسكارا تكثيف وتطويل الرموش ثلاثية الأبعاد",
+    category: "مكياج",
+    price: "340 ج.م",
+    image: "https://images.unsplash.com/photo-1503236823255-94609f598e71?auto=format&fit=crop&w=600&q=75",
+    description: "فرشاة مخصصة ترفع كل رمش من الجذور وتمنحك سواداً فاحماً وكثافة مذهلة طوال اليوم دون تكتل.",
+  },
+
+  // --- عناية بالبشرة (Skincare) ---
+  {
+    id: "s1",
+    name: "سيروم الهيالورونيك والنياسيناميد المركز",
+    category: "عناية بالبشرة",
+    price: "680 ج.م",
+    originalPrice: "850 ج.م",
+    discount: "وفري 170 ج.م",
+    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=75",
+    video: "/videos/cream-hero.mp4",
+    description: "ترطيب عميق ودعم حاجز البشرة لتقليل مظهر المسام ومنح وجهك نضارة ملحوظة وإشراقة صحية متجددة.",
+    badge: "الأعلى تقييماً",
   },
   {
-    id: "b6",
-    name: "Dune Rosée",
-    category: "Blushes",
-    price: "€56",
-    image: "https://www.collectioncosmetics.com/cdn/shop/products/BlusherIndividual6_2400x.jpg?v=1623332349",
+    id: "s2",
+    name: "كريم الترطيب العميق بمستخلصات طبيعية",
+    category: "عناية بالبشرة",
+    price: "520 ج.م",
+    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=75",
+    description: "قوام غني وخفيف يمتص سريعاً ليغذي البشرة الجافة والعادية ويتركها ناعمة كالحرير على مدار 24 ساعة.",
   },
   {
-    id: "b7",
-    name: "Blush Couture",
-    category: "Blushes",
-    price: "€57",
-    image: "https://tse2.mm.bing.net/th/id/OIP.HEOVLH0fPKgtNAY3uuwEKwHaFw?w=626&h=487&rs=1&pid=ImgDetMain&o=7&rm=3",
+    id: "s3",
+    name: "غسول الوجه الرغوي المنقي واللطيف",
+    category: "عناية بالبشرة",
+    price: "320 ج.م",
+    image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=600&q=75",
+    description: "ينظف الشوائب والزيوت الزائدة بلطف دون تجريد البشرة من رطوبتها الطبيعية، مناسب للاستخدام اليومي.",
   },
   {
-    id: "b8",
-    name: "Mauve Halo",
-    category: "Blushes",
-    price: "€49",
-    image: "https://tse1.mm.bing.net/th/id/OIP.e8n4BklBtKj4uPkdqk5F2wHaE7?w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3",
+    id: "s4",
+    name: "سيروم فيتامين C لتفتيح وتوحيد اللون",
+    category: "عناية بالبشرة",
+    price: "720 ج.م",
+    image: "https://images.unsplash.com/photo-1608248597359-5033501a3577?auto=format&fit=crop&w=600&q=75",
+    description: "مضادات أكسدة فعالة تساعد على حماية البشرة وتمنحها حيوية وإشراقة ملفتة مع تقليل مظهر التعب والإرهاق.",
+  },
+
+  // --- عناية بالشعر (Haircare) ---
+  {
+    id: "h1",
+    name: "زيت الأرغان وزبدة الشيا المغذي للشعر",
+    category: "عناية بالشعر",
+    price: "490 ج.م",
+    originalPrice: "600 ج.م",
+    discount: "خصم 18%",
+    image: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=600&q=75",
+    description: "إكسير مركز يعالج أطراف الشعر المتقصفة ويمنحه لمعاناً حريرياً ويحميه من حرارة التصفيف دون أي ملمس دهني.",
+    badge: "مفضل العملاء",
   },
   {
-    id: "b9",
-    name: "Soleil Rosé",
-    category: "Blushes",
-    price: "€55",
-    image: "https://img.freepik.com/premium-photo/pink-makeup-with-pink-lip-color_1048116-242.jpg",
+    id: "h2",
+    name: "ماسك الترميم المكثف للشعر التالف والجاف",
+    category: "عناية بالشعر",
+    price: "450 ج.م",
+    image: "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=75",
+    description: "عناية أسبوعية فائقة تعيد بناء ألياف الشعر وتقوي خصلاته من الجذور حتى الأطراف لملمس ناعم وسهل التمشيط.",
   },
   {
-    id: "b10",
-    name: "Flirt Lumière",
-    category: "Blushes",
-    price: "€52",
-    image: "https://www.mommymakeup.com/cdn/shop/files/PPC_4-Shades-powder_1000px_3602c9a5-0ed9-4e9c-8245-1402e8eccdb1.jpg?crop=center&height=960&v=1693756821&width=960",
+    id: "h3",
+    name: "شامبو خالي من السلفات ومقوي للبصيلات",
+    category: "عناية بالشعر",
+    price: "360 ج.م",
+    image: "https://images.unsplash.com/photo-1585232351009-aa87416fca90?auto=format&fit=crop&w=600&q=75",
+    description: "تركيبة لطيفة تحافظ على ترطيب فروة الرأس واللون المصبوغ، وتمنح الشعر حيوية وكثافة واضحة بعد كل غسلة.",
+  },
+
+  // --- عطور (Fragrance) ---
+  {
+    id: "f1",
+    name: "عطر كاريشما روز إيليجانس - 100 مل",
+    category: "عطور",
+    price: "1,250 ج.م",
+    originalPrice: "1,450 ج.م",
+    discount: "وفري 200 ج.م",
+    image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=75",
+    description: "توليفة أنثوية ساحرة تجمع بين نفحات الورد الدمشقي، والمسك الأبيض، مع لمسة دافئة من خشب الصندل الشرقي.",
+    badge: "العطر الأكثر طلباً",
+  },
+  {
+    id: "f2",
+    name: "عطر عنبر سولتير المركز - 80 مل",
+    category: "عطور",
+    price: "1,100 ج.م",
+    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=600&q=75",
+    description: "عطر شرقي دافئ يجمع الفخامة والغموض بنفحات العنبر الأصيل والياسمين المصري الفواح لإطلالة لا تُنسى.",
+  },
+  {
+    id: "f3",
+    name: "معطر الجسم والشعر جولد شيمر - 250 مل",
+    category: "عطور",
+    price: "390 ج.م",
+    image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=75",
+    description: "رذاذ منعش برائحة الزهور والفواكه المنعشة مع حبيبات بريق ناعمة تضفي على إطلالتك سحراً خاصاً طوال اليوم.",
+  },
+
+  // --- مستحضرات تجميل (Cosmetics Essentials & Tools) ---
+  {
+    id: "c1",
+    name: "مجموعة فرش المكياج الاحترافية (12 قطعة)",
+    category: "مستحضرات تجميل",
+    price: "650 ج.م",
+    originalPrice: "800 ج.م",
+    discount: "خصم 19%",
+    image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=600&q=75",
+    description: "شعيرات صناعية فائقة النعومة مع حافظة فاخرة، صُممت لتطبيق دقيق واحترافي لكافة أنواع البودرة والكريمات.",
+    badge: "طقم احترافي",
+  },
+  {
+    id: "c2",
+    name: "إسفنجة دمج المكياج الثلاثية مع حامل ذهبي",
+    category: "مستحضرات تجميل",
+    price: "240 ج.م",
+    image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=75",
+    description: "إسفنجة فائقة المرونة تمنحك تغطية سلسة وموحدة لمستحضرات الأساس والكونسيلر دون امتصاص الفائض.",
+  },
+  {
+    id: "c3",
+    name: "مثبت مكياج ديوي جلو طويل الأمد",
+    category: "مستحضرات تجميل",
+    price: "390 ج.م",
+    image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=600&q=75",
+    description: "رذاذ تثبيت يحافظ على انتعاش وثبات المكياج حتى 16 ساعة مع ترطيب خفيف يعزز إشراقة المظهر النهائي.",
+  },
+
+  // --- عروض وخصومات (Offers & Discounts) ---
+  {
+    id: "o1",
+    name: "بوكس العناية الملكي المتكامل من كاريشما",
+    category: "عروض وخصومات",
+    price: "1,390 ج.م",
+    originalPrice: "1,950 ج.م",
+    discount: "وفري 560 ج.م",
+    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=75",
+    description: "يشمل: سيروم الهيالورونيك، كريم الترطيب الفاخر، غسول الوجه اللطيف، وماسك الترميم — المجموعة الأكثر توفيراً.",
+    badge: "باكدج توفير",
+    isBundle: true,
+    bundleItems: [
+      { id: "sk1", name: "سيروم الهيالورونيك والنياسيناميد 30 مل", price: "480 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80" },
+      { id: "sk2", name: "كريم الترطيب الفاخر بخلاصة الورد 50 مل", price: "520 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80" },
+      { id: "sk3", name: "غسول الوجه الرغوي المنظف بلطف 150 مل", price: "380 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1556228722-d0b71383e589?auto=format&fit=crop&w=600&q=80" },
+      { id: "sk4", name: "ماسك النضارة والتفتيح الأسبوعي", price: "570 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" },
+    ],
+  },
+  {
+    id: "o2",
+    name: "ثنائي أحمر الشفاه المخملي + قلم التحديد",
+    category: "عروض وخصومات",
+    price: "550 ج.م",
+    originalPrice: "750 ج.م",
+    discount: "خصم 26%",
+    image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=75",
+    description: "اختاري لونك المفضل واحصلي على قلم تحديد شفاه مطابق لمنح شفتيك رسماً دقيقاً ومظهراً ممتلئاً يدوم طويلاً.",
+    badge: "باكدج مميز",
+    isBundle: true,
+    bundleItems: [
+      { id: "m1", name: "أحمر شفاه كاريشما المخملي مات", price: "420 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80" },
+      { id: "m10", name: "قلم تحديد الشفاه الدقيق والمقاوم للتلطخ", price: "330 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80" },
+    ],
+  },
+  {
+    id: "o3",
+    name: "طقم سهرة كاريشما (عطر + معطر لمعان)",
+    category: "عروض وخصومات",
+    price: "1,450 ج.م",
+    originalPrice: "1,840 ج.م",
+    discount: "وفري 390 ج.م",
+    image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=75",
+    description: "عطر روز إيليجانس الفاخر 100 مل مع معطر الجسم والبريق اللامع 250 مل في علبة هدايا أنيقة مجهزة للإهداء.",
+    badge: "باكدج العروسة",
+    isBundle: true,
+    bundleItems: [
+      { id: "p1", name: "عطر كاريشما روز إيليجانس 100 مل", price: "1,150 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" },
+      { id: "p2", name: "معطر الجسم والشعر بالبريق اللامع 250 مل", price: "690 ج.م", quantity: 1, image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" },
+    ],
   },
 ];
+
+// Special featured selections
+export const blushProducts = products.filter(
+  (p) => p.category === "مكياج" || p.category === "عروض وخصومات",
+);
+
+export const specialOffers = products.filter((p) => p.category === "عروض وخصومات" || Boolean(p.discount));
